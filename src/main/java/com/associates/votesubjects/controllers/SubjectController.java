@@ -5,6 +5,7 @@ import com.associates.votesubjects.core.errors.EntityNotFoundException;
 import com.associates.votesubjects.models.Subject;
 import com.associates.votesubjects.repositories.SubjectRepository;
 import com.associates.votesubjects.services.SubjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,11 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/subject")
 public class SubjectController extends BaseController<Subject, SubjectService, SubjectRepository> {
+
+    @Autowired
+    public SubjectController(SubjectService service){
+        super(service);
+    }
 
     @Override
     @GetMapping("/{slugOrId}")

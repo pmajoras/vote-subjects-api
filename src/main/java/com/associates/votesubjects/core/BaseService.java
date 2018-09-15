@@ -7,9 +7,12 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 public abstract class BaseService<T extends BaseEntity, U extends BaseRepository<T>>  {
+    protected U repository;
 
     @Autowired
-    protected U repository;
+    public BaseService(U repository){
+        this.repository = repository;
+    }
 
     public T save(final T entity) {
         if (StringUtils.isEmpty(entity.getId())) {

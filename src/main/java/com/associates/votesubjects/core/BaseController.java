@@ -8,9 +8,12 @@ import javax.validation.Valid;
 
 @RestController
 public abstract class BaseController<T extends BaseEntity, U extends BaseService<T, Z>, Z extends BaseRepository<T>>  {
+    protected U service;
 
     @Autowired
-    protected U service;
+    public BaseController(U service){
+        this.service = service;
+    }
 
     @PostMapping("/")
     public T create(@Valid @RequestBody final T entity) {
