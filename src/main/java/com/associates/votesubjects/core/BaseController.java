@@ -14,6 +14,7 @@ public abstract class BaseController<T extends BaseEntity, U extends BaseService
 
     @PostMapping("/")
     public T create(@Valid @RequestBody final T entity) {
+        entity.setId(null);
         return service.save(entity);
     }
 
