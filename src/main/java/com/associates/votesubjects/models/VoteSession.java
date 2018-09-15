@@ -13,10 +13,13 @@ import java.time.LocalDateTime;
 @Data
 @Document
 public class VoteSession extends BaseEntity {
+    public VoteSession() {
+        setExpiresAt(LocalDateTime.now().plusMinutes(1));
+    }
 
     @NotNull
     private String subjectId;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime expiresAt;
 }
