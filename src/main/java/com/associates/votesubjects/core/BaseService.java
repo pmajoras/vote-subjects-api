@@ -1,6 +1,8 @@
 package com.associates.votesubjects.core;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
+
 import java.time.LocalDateTime;
 import java.util.Optional;
 
@@ -10,7 +12,9 @@ public abstract class BaseService<T extends BaseEntity, U extends BaseRepository
     protected U repository;
 
     public T save(final T entity) {
-        entity.setCreatedAt(LocalDateTime.now());
+        if (StringUtils.isEmpty(entity.getId())) {
+            entity.setCreatedAt(LocalDateTime.now());
+        }
         return repository.save(entity);
     }
 
