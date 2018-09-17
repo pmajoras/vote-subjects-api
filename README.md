@@ -1,4 +1,4 @@
-# API REST para votação de pautas
+# Serviço de votação de pautas
 
 A aplicação trata-se de uma API REST com as funcionalidades de criação e votação de pautas, e contabilização dos votos dos associados.
 
