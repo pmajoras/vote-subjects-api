@@ -1,9 +1,9 @@
 package com.associates.votesubjects.core;
 
-import com.associates.votesubjects.core.errors.BusinessException;
-import com.associates.votesubjects.core.errors.EntityNotFoundException;
+import com.associates.votesubjects.api.errors.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.Errors;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,6 +26,14 @@ public abstract class BaseController<T extends BaseEntity, U extends BaseService
     @GetMapping("/{id}")
     public T getById(@Valid @PathVariable("id") final String id) {
         return service.findById(id).orElseThrow(EntityNotFoundException::new);
+    }
+
+    @GetMapping("/")
+    public Page<T> getAll(@RequestParam(value = "page", defaultValue = "1") int page,
+                          @RequestParam(value = "size", defaultValue = "100") int size) {
+        size = size >= 1 ? size : 100;
+        page = page > 0 ? page : 1;
+        return service.findAllPaged(PageRequest.of(page - 1, size));
     }
 }
 

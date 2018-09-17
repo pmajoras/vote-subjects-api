@@ -1,4 +1,4 @@
-package com.associates.votesubjects.core.errors;
+package com.associates.votesubjects.api.errors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

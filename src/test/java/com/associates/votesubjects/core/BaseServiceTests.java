@@ -11,13 +11,17 @@ import org.mockito.Mock;
 import org.mockito.MockSettings;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BaseServiceTests {
@@ -62,5 +66,14 @@ public class BaseServiceTests {
 
         assertEquals(voteResult, foundVote.get());
         assertEquals(voteResult.getId(), foundVote.get().getId());
+    }
+
+    @Test
+    public void findAllPaged_shouldReturnDefaultPagedResultWhenPageRequestIsNull() {
+        Page<Vote> pagedResult = Page.empty();
+        given(repository.findAll(Mockito.any(Pageable.class))).willReturn(pagedResult);
+
+        Page<Vote> result = baseService.findAllPaged(null);
+        assertEquals(pagedResult, result);
     }
 }

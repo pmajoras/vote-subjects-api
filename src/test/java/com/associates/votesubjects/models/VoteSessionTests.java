@@ -6,8 +6,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VoteSessionTests {
@@ -19,5 +18,19 @@ public class VoteSessionTests {
 
         assertNotNull(voteSession.getExpiresAt());
         assertEquals(nowPlusOneMinute.getMinute(), voteSession.getExpiresAt().getMinute());
+    }
+
+    @Test
+    public void isExpired_shouldReturnTrueWhenExpiresAtIsLowerThenCurrentDate() {
+        VoteSession voteSession = new VoteSession();
+        voteSession.setExpiresAt(LocalDateTime.now().plusMinutes(-5));
+
+        assertTrue(voteSession.isExpired());
+    }
+
+    @Test
+    public void isExpired_shouldReturnFalseWhenExpiresAtIsGreaterThenCurrentDate() {
+        VoteSession voteSession = new VoteSession();
+        assertFalse(voteSession.isExpired());
     }
 }

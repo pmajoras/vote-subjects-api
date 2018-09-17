@@ -1,11 +1,10 @@
 package com.associates.votesubjects.core;
 
+import com.associates.votesubjects.api.ApiConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Data
@@ -15,6 +14,6 @@ public abstract class BaseEntity {
     private String id;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = ApiConstants.DATE_PATTERN)
     private LocalDateTime createdAt;
 }
