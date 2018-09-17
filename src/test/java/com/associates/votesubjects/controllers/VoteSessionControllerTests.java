@@ -1,8 +1,6 @@
 package com.associates.votesubjects.controllers;
 
 import com.associates.votesubjects.api.models.VoteResult;
-import com.associates.votesubjects.models.Subject;
-import com.associates.votesubjects.services.SubjectService;
 import com.associates.votesubjects.services.VoteResultService;
 import com.associates.votesubjects.services.VoteSessionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,8 +17,9 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.util.Optional;
 
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(MockitoJUnitRunner.class)
 public class VoteSessionControllerTests {

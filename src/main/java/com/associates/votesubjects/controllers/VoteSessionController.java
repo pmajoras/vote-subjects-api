@@ -1,7 +1,6 @@
 package com.associates.votesubjects.controllers;
 
 import com.associates.votesubjects.api.errors.EntityNotFoundException;
-import com.associates.votesubjects.api.models.VoteOptionResult;
 import com.associates.votesubjects.api.models.VoteResult;
 import com.associates.votesubjects.core.BaseController;
 import com.associates.votesubjects.models.VoteSession;

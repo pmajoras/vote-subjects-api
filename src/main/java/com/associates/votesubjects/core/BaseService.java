@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 public abstract class BaseService<T extends BaseEntity, U extends BaseRepository<T>>  {

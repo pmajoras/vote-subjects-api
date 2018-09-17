@@ -2,13 +2,10 @@ package com.associates.votesubjects.core;
 
 import com.associates.votesubjects.models.Vote;
 import com.associates.votesubjects.repositories.VoteRepository;
-import com.associates.votesubjects.services.VoteService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockSettings;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.data.domain.Page;
@@ -16,12 +13,8 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.mockito.ArgumentMatchers.argThat;
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BaseServiceTests {
